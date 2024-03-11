@@ -22,7 +22,8 @@ class Name(Field):
 class Phone(Field):
 	def __init__(self, phone):
 		if len(phone) != 10 or not phone.isdigit():
-			raise ValueError("Phone number must be 10 digits long.")
+			print("Phone number must be 10 digits long.")
+			raise ValueError()
 		super().__init__(phone)
 
 
@@ -32,7 +33,8 @@ class Birthday(Field):
 			birthday = datetime.strptime(birthday, "%d.%m.%Y")
 			super().__init__(birthday)
 		except ValueError:
-			raise ValueError("Date must be in format DD.MM.YYYY.")
+			print("Date must be in format DD.MM.YYYY.")
+			raise ValueError()
 		
 	def __str__(self):
 		return self.value.strftime("%d.%m.%Y")
